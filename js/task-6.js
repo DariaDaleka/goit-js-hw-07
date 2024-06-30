@@ -5,8 +5,9 @@ function getRandomHexColor() {
 }
 function createBoxes(amount) {
   const boxesContainer = document.getElementById("boxes");
-  boxesContainer.innerHTML = ""; // Clear existing boxes
+  boxesContainer.innerHTML = "";
   let boxSize = 30;
+  const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
@@ -14,9 +15,10 @@ function createBoxes(amount) {
     box.style.height = `${boxSize}px`;
     box.style.backgroundColor = getRandomHexColor();
     box.textContent = i + 1;
-    boxesContainer.appendChild(box);
+    fragment.appendChild(box);
     boxSize += 10;
   }
+  boxesContainer.appendChild(fragment);
 }
 
 function destroyBoxes() {
